@@ -1,1 +1,3 @@
+.gitignore
 .svn
+.DS_Store
