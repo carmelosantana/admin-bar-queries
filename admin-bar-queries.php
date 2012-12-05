@@ -3,7 +3,7 @@
 Plugin Name: Admin Bar Queries
 Plugin URI: http://carmelosantana.com/
 Description: Admin bar MySQL query and script execution timer output.
-Version: 0.5.1
+Version: 0.5.2
 Author: Carmelo Santana
 Author URI: http://carmelosantana.com
 */
@@ -17,10 +17,20 @@ function do_admin_bar_queries(){
 		return;
 	
 	global $wp_admin_bar;			
+
 	$wp_admin_bar->add_menu( array(
-		'parent' => false,
 		'id' => 'admin_bar_queries',
-		'title' => get_num_queries().'q '.timer_stop(0, 2).'s', // link title
+		'title' => get_num_queries().'q '.timer_stop(0, 2).'s',
 		'href' => '#'
-	));	
+	));
+
+	foreach ( $load = sys_getloadavg() as $c => $l )
+		$load[$c] = round($l, 2);
+
+	$wp_admin_bar->add_menu( array(
+		'parent' => 'admin_bar_queries',
+		'id' => 'admin_bar_memory',
+		'title' => 'Load: <strong>' . $load[0] . /*', ' . $load[1] . ', ' . $load[2] .*/ '</strong>',
+		'href' => '#'
+	));
 }
