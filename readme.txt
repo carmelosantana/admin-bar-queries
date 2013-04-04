@@ -8,11 +8,11 @@ Stable tag: 0.5.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-MySQL queries and seconds spent rendering page added to your admin bar.
+MySQL queries and load time added to your admin bar.
 
 == Description ==
 
-Adds total MySQL queries and the time (in seconds) spent rendering page output to your admin bar. If installed on a multi-site installation, output is restricted to super admins.
+Adds total MySQL queries and time (in seconds) spent rendering page output to your admin bar. If installed on a multi-site installation, output is restricted to super admins.
 
 == Installation ==
 
