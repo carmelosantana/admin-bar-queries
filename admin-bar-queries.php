@@ -3,7 +3,7 @@
 Plugin Name: Admin Bar Queries
 Plugin URI: http://carmelosantana.com/
 Description: MySQL queries, script timer and CPU load in your admin bar.
-Version: 0.5.2
+Version: 0.5.21
 Author: Carmelo Santana
 Author URI: http://carmelosantana.com
 */
@@ -27,14 +27,18 @@ function do_admin_bar_queries(){
 
 	// if available, add load
 	if ( function_exists('sys_getloadavg') ){
-		foreach ( $load = sys_getloadavg() as $c => $l )
-			$load[$c] = round($l, 2);
+		$load = sys_getloadavg();
 
-		$wp_admin_bar->add_menu( array(
-			'parent' => 'admin_bar_queries',
-			'id' => 'admin_bar_memory',
-			'title' => 'Load: <strong>' . $load[0] . /*', ' . $load[1] . ', ' . $load[2] .*/ '</strong>',
-			'href' => '#'
-		));
+		if ( is_array($load) and !empty($load) ){
+			foreach ( $load as $c => $l )
+				$load[$c] = round($l, 2);
+
+			$wp_admin_bar->add_menu( array(
+				'parent' => 'admin_bar_queries',
+				'id' => 'admin_bar_memory',
+				'title' => 'Load: <strong>' . $load[0] . /*', ' . $load[1] . ', ' . $load[2] .*/ '</strong>',
+				'href' => '#'
+			));
+		}
 	}
 }
