@@ -3,8 +3,8 @@ Contributors: carmelosantana
 Donate link: http://carmelosantana.com/
 Tags: adminbar, mysql queries, script timer, debugging, mysql, timer_stop, php execution time, php timer
 Requires at least: 3.1
-Tested up to: 3.5
-Stable tag: 0.5.1
+Tested up to: 3.6
+Stable tag: 0.5.21
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -24,6 +24,9 @@ Adds MySQL queries, rendering time (in seconds), and CPU load to your admin bar.
 1. MySQL queries and time (in seconds) spent rendering page output.
 
 == Changelog ==
+
+= 0.5.21 =
+* Fixed Invalid argument supplied for foreach() when sys_getloadavg() is FALSE
 
 = 0.5.2 =
 * Added CPU load as drop down element. 
